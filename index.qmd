@@ -73,6 +73,6 @@ format:
     - Called 117 times with `DMT01` example.
 
 - Explore **alternative data structures**:
-  - `vctrs::data_frame` for performance-critical sections (`data.table`?)
+  - `vctrs::data_frame` for performance-critical sections
     - or constrained tibble usage where inputs are fully controlled
-  - Other
+  - Others (?custom, `data.table`?)
