@@ -40,7 +40,7 @@ format:
 
 ![](dmt01.png)
 
-## 🏎️ Performance takeaways {.small}
+## 🏎️ Performance takeaways {style="font-size: 0.5em;"}
 
 - **No simple fix**
   - The packages are inherently complex to support flexibility, and a rich user-facing API
