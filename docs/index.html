@@ -228,27 +228,27 @@
 <ul>
 <li><strong>No simple fix</strong>
 <ul>
-<li>The packages are inherently complex to support flexibility, composability, and a rich user-facing API.</li>
+<li>The packages are inherently complex to support flexibility, and a rich user-facing API</li>
+</ul></li>
+<li><strong>Incremental gains</strong>
+<ul>
+<li>Targeted optimizations yield small, finite improvements <em>(~150 ms achieved)</em></li>
 </ul></li>
 <li><strong>Tibble-centric internals</strong>
 <ul>
-<li>Core data structures are tibbles, used to store statistics, metadata, and intermediate results.</li>
+<li>Core data structures are tibbles, used to store statistics, metadata, and intermediate results</li>
 </ul></li>
 <li><strong>Transformation-heavy workflows</strong>
 <ul>
-<li>Extensive use of <code>mutate()</code>, joins, and nesting / unnesting across multiple layers.</li>
+<li>Extensive use of <code>mutate()</code>, joins, nesting / unnesting, …</li>
 </ul></li>
 <li><strong>Memory &amp; GC overhead</strong>
 <ul>
 <li>They become noticeable contributors to runtime</li>
 </ul></li>
-<li><strong>Incremental gains</strong>
-<ul>
-<li>Targeted optimizations yield small, finite improvements (~150 ms achieved).</li>
-</ul></li>
 <li><strong>Structural limits</strong>
 <ul>
-<li>Meaningful speedups would likely require structural refactoring, not isolated changes.</li>
+<li>Meaningful speedups would likely require structural refactoring, not isolated changes</li>
 </ul></li>
 <li><strong>Selective Paralelization</strong>
 <ul>
@@ -256,8 +256,8 @@
 </ul></li>
 </ul>
 </section>
-<section id="possible-path-forward" class="slide level2">
-<h2>🔮 Possible path forward</h2>
+<section id="path-forward" class="slide level2">
+<h2>🔮 Path forward</h2>
 <ul>
 <li>Focus on top contributors:
 <ul>
@@ -271,11 +271,11 @@
 </ul></li>
 <li>Explore <strong>alternative data structures</strong>:
 <ul>
-<li><code>vctrs</code> for performance-critical sections
+<li><code>vctrs::data_frame</code> for performance-critical sections (<code>data.table</code>?)
 <ul>
 <li>or constrained tibble usage where inputs are fully controlled</li>
 </ul></li>
-<li>Alternative structures better suited</li>
+<li>Other</li>
 </ul></li>
 </ul>
 
