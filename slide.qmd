@@ -1,0 +1,75 @@
+---
+format:
+  revealjs:
+    smaller: true
+---
+
+## iris
+
+![](iris_table.png)
+
+```.r
+# bench::mark() with 10 iterations
+# A tibble: 1 × 4
+  expression   median  n_gc mem_alloc
+  <bch:expr> <bch:tm> <dbl> <bch:byt>
+1 iris         361ms    12    1.97MB
+```
+
+## iris
+
+> Simplified results from `profvis()`
+
+![](iris.png)
+
+## DMT01 _(adapted)_
+
+![](dmt01_table.png)
+
+```.r
+# bench::mark() with 10 iterations
+# A tibble: 1 × 4
+  expression          median  n_gc mem_alloc
+  <bch:expr>        <bch:tm> <dbl> <bch:byt>
+1 DMT01               1.2s    41    6.87MB
+```
+
+## DMT01 _(adapted)_
+
+> Simplified results from `profvis()`
+
+![](dmt01.png)
+
+## 🏎️ Performance takeaways {.small}
+
+- **No simple fix**
+  The packages are inherently complex to support flexibility, composability, and a rich user-facing API.
+
+- **Tibble-centric internals**
+  Core data structures are tibbles, used to store statistics, metadata, and intermediate results.
+
+- **Transformation-heavy workflows**
+  Extensive use of `mutate()`, joins, and nesting / unnesting across multiple layers.
+
+- **Memory & GC overhead**
+  They become noticeable contributors to runtime
+
+- **Incremental gains**
+  Targeted optimizations yield small, finite improvements (~150 ms achieved).
+
+- **Structural limits**
+  Meaningful speedups would likely require structural refactoring, not isolated changes.
+
+## 🔮 Possible path forward
+
+- Focus on top contributors:
+  - `cards::ard_tabulate()`
+  - `gtsummary::brdg_summary()` _(and their `pier_summary_*` internals)_
+  - `cards::ard_missing`
+  - `cards::get_ard_statistics()` (💡 caching / different data structure)
+    - Called 117 times with `DMT01` example.
+
+- Explore **alternative data structures**:
+  - `vctrs` for performance-critical sections
+    - or constrained tibble usage where inputs are fully controlled
+  - Alternative structures better suited
