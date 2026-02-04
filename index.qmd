@@ -43,22 +43,25 @@ format:
 ## 🏎️ Performance takeaways {.small}
 
 - **No simple fix**
-  The packages are inherently complex to support flexibility, composability, and a rich user-facing API.
+  - The packages are inherently complex to support flexibility, composability, and a rich user-facing API.
 
 - **Tibble-centric internals**
-  Core data structures are tibbles, used to store statistics, metadata, and intermediate results.
+  - Core data structures are tibbles, used to store statistics, metadata, and intermediate results.
 
 - **Transformation-heavy workflows**
-  Extensive use of `mutate()`, joins, and nesting / unnesting across multiple layers.
+  - Extensive use of `mutate()`, joins, and nesting / unnesting across multiple layers.
 
 - **Memory & GC overhead**
-  They become noticeable contributors to runtime
+  - They become noticeable contributors to runtime
 
 - **Incremental gains**
-  Targeted optimizations yield small, finite improvements (~150 ms achieved).
+  - Targeted optimizations yield small, finite improvements (~150 ms achieved).
 
 - **Structural limits**
-  Meaningful speedups would likely require structural refactoring, not isolated changes.
+  - Meaningful speedups would likely require structural refactoring, not isolated changes.
+
+- **Selective Paralelization**
+  - Explore parallel execution in well-identified mapping steps with sufficient workload per iteration, where overhead is worthwhile
 
 ## 🔮 Possible path forward
 

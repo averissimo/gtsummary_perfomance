@@ -226,12 +226,34 @@
 <section id="performance-takeaways" class="slide level2 small">
 <h2>🏎️ Performance takeaways</h2>
 <ul>
-<li><p><strong>No simple fix</strong> The packages are inherently complex to support flexibility, composability, and a rich user-facing API.</p></li>
-<li><p><strong>Tibble-centric internals</strong> Core data structures are tibbles, used to store statistics, metadata, and intermediate results.</p></li>
-<li><p><strong>Transformation-heavy workflows</strong> Extensive use of <code>mutate()</code>, joins, and nesting / unnesting across multiple layers.</p></li>
-<li><p><strong>Memory &amp; GC overhead</strong> They become noticeable contributors to runtime</p></li>
-<li><p><strong>Incremental gains</strong> Targeted optimizations yield small, finite improvements (~150 ms achieved).</p></li>
-<li><p><strong>Structural limits</strong> Meaningful speedups would likely require structural refactoring, not isolated changes.</p></li>
+<li><strong>No simple fix</strong>
+<ul>
+<li>The packages are inherently complex to support flexibility, composability, and a rich user-facing API.</li>
+</ul></li>
+<li><strong>Tibble-centric internals</strong>
+<ul>
+<li>Core data structures are tibbles, used to store statistics, metadata, and intermediate results.</li>
+</ul></li>
+<li><strong>Transformation-heavy workflows</strong>
+<ul>
+<li>Extensive use of <code>mutate()</code>, joins, and nesting / unnesting across multiple layers.</li>
+</ul></li>
+<li><strong>Memory &amp; GC overhead</strong>
+<ul>
+<li>They become noticeable contributors to runtime</li>
+</ul></li>
+<li><strong>Incremental gains</strong>
+<ul>
+<li>Targeted optimizations yield small, finite improvements (~150 ms achieved).</li>
+</ul></li>
+<li><strong>Structural limits</strong>
+<ul>
+<li>Meaningful speedups would likely require structural refactoring, not isolated changes.</li>
+</ul></li>
+<li><strong>Selective Paralelization</strong>
+<ul>
+<li>Explore parallel execution in well-identified mapping steps with sufficient workload per iteration, where overhead is worthwhile</li>
+</ul></li>
 </ul>
 </section>
 <section id="possible-path-forward" class="slide level2">
